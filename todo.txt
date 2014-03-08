@@ -1,0 +1,11 @@
+
+
+logging
+	keep track of posts
+	stdout?
+	save images that cause errors
+
+thread.jsp - thread dump
+status.jsp - json dump of current status for monitoring
+
+max file upload size?

@@ -1,0 +1,52 @@
+<project name="pdf2txt" default="compile">
+
+	<path id="class.path">
+		<pathelement path="www/WEB-INF/classes" />
+		<fileset dir="/usr/share/java">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="/usr/share/jetty">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="www/WEB-INF/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="clean" description="Force a clean slate to rebuild">
+		<delete dir="www/WEB-INF/classes"/>
+	</target>
+
+	<target name="compile" description="Compile the application servlet code">
+
+		<mkdir dir="www/WEB-INF/classes"/>
+
+		<javac
+			classpathref="class.path"
+			debug="on"
+			deprecation="on"
+			destdir="www/WEB-INF/classes"
+			listfiles="on"
+			srcdir="src"
+			>
+		</javac>
+
+	</target>
+
+	<target name="cp">
+		<echo message="classpath=${toString:class.path}" />
+	</target>
+
+	<target name="run" depends="compile">
+		<java
+			classname="info.fileformat.DevServer"
+			classpathref="class.path"
+			fork="true"
+			>
+
+			<sysproperty key="java.awt.headless" value="true"/>
+			<sysproperty key="java.io.tmpdir" value="/tmp"/>
+			<sysproperty key="START" value="/etc/jetty/start.config"/>
+		</java>
+	</target>
+</project>
