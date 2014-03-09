@@ -1,6 +1,6 @@
-# Convert a SVG to a PNG
+# Convert SVG to PNG
 
-This is a simple web server that converts from SVG to PNG using [Apache Batik](http://xmlgraphics.apache.org/batik/using/transcoder.html).  You can see it in action by looking at the form at [FileFormat.Info](http://www.fileformat.info/convert/image/svg2png.htm).
+This is a simple web server that converts from SVG to PNG using [Apache Batik](http://xmlgraphics.apache.org/batik/using/transcoder.html).  You can see it in action by submitting the [form on FileFormat.Info](http://www.fileformat.info/convert/image/svg2png.htm).
 
 The code is deliberately simple to avoid dependencies.  All necessary libraries are included.
 
@@ -21,4 +21,4 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Affero Public License for more details.
 
 You should have received a copy of the GNU Affero Public License
-along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+along with ff-svg2raster.  If not, see <http://www.gnu.org/licenses/>.
