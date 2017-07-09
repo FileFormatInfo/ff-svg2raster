@@ -4,11 +4,12 @@ This is a simple web server that converts from SVG to PNG using [Apache Batik](h
 
 The code is deliberately simple to avoid dependencies.  All necessary libraries are included.
 
-You will need Jetty installed to run in development.  The included deploy script pushes to [AppFog](https://www.appfog.com/) but should work on any recent Java web server.
+The included [run](run.sh) and [deploy](deploy.sh) shell scripts use Google AppEngine
+but the code should work on any recent Java web server.
 
 ## License
 
-Copyright © 2005-2014 Andrew Marcuse
+Copyright © 2005-2017 Andrew Marcuse
 
 ff-svg2raster is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero Public License as published by
