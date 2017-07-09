@@ -12,5 +12,13 @@
         <location>/500.jsp</location>
     </error-page>
 
-
+    <servlet>
+        <servlet-name>status</servlet-name>
+        <jsp-file>/status.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>status</servlet-name>
+        <url-pattern>/status.json</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
