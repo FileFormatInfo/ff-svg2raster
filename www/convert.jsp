@@ -5,7 +5,6 @@
 		 		 java.util.*,
 		 		 org.apache.batik.transcoder.*,
 		 		 org.apache.batik.transcoder.image.*,
-		 		 org.apache.commons.codec.binary.*,
 		 		 org.apache.commons.fileupload.*,
 		 		 org.apache.commons.fileupload.servlet.*,
 		 		 org.apache.commons.fileupload.util.*,
@@ -144,17 +143,18 @@
     catch (Exception e)
     {
     	out.println("ERROR: " + e.getMessage());
+    	e.printStackTrace(new PrintWriter(out, true));
     }
     out.println("INFO: done");
     out.println("</pre>");
 
-    if (data != null && data.length > 0 && mimeType != null)
+    if (result != null && result.length > 0 && mimeType != null)
     {
     	out.print("<p>");
     	out.print("<img alt=\"Your converted image\" src=\"data:");
     	out.print(mimeType);
     	out.print(";base64,");
-    	out.print(Base64.encodeBase64String(result));
+    	out.print(Base64.getMimeEncoder().encodeToString(result));
     	out.print("\" />");
     	out.println("</p>");
     }

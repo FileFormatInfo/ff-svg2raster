@@ -2,4 +2,4 @@
 #
 # run the dev environment for pdf2txt
 #
-ant run
+dev_appserver.py www
