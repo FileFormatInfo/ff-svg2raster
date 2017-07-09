@@ -2,5 +2,5 @@
 #
 #
 #
-cd www
-af update svg2raster
+
+gcloud beta app deploy --verbosity=info www
