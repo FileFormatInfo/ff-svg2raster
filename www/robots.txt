@@ -1,5 +1,5 @@
 #
-# robots.txt for pdf2raster
+# robots.txt for svg2raster
 #
 # nothing to index here: links should go to FileFormat.Info 
 #
