@@ -1,5 +1,7 @@
 #
-# robots.txt for pdf2txt
+# robots.txt for pdf2raster
+#
+# nothing to index here: links should go to FileFormat.Info 
 #
 User-agent: *
 Disallow: /
