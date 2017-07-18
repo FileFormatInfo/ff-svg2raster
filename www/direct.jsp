@@ -3,21 +3,35 @@
 		 import="java.io.*,
 		 		 java.text.*,
 		 		 java.util.*,
+		 		 java.util.logging.Logger,
+		 		 java.util.regex.*,
 		 		 org.apache.batik.transcoder.*,
 		 		 org.apache.batik.transcoder.image.*,
 		 		 org.apache.commons.fileupload.*,
 		 		 org.apache.commons.fileupload.servlet.*,
 		 		 org.apache.commons.fileupload.util.*,
 		 		 org.apache.commons.lang3.*"
+%><%!
+    private static final Logger log = Logger.getLogger("direct.jsp");
+    private static final Pattern refpat = Pattern.compile("^https?://www\\.fileformat\\.info/.*");
 %><%
 
 	if (request.getMethod().equalsIgnoreCase("post") == false)
 	{
-		response.sendRedirect("http://www.fileformat.info/convert/image/svg2png.htm");
+		response.sendRedirect("https://www.fileformat.info/convert/image/svg2png.htm");
 		return;
 	}
 
-%><%
+	String referrer = request.getHeader("Referer");
+	if (referrer == null)
+	{
+	    log.info("No referrer");
+	}
+	else if (refpat.matcher(referrer).matches() == false)
+	{
+	    log.warning("Foreign referrer: '" + referrer + "'");
+    }
+
 	Map<String, String> params = new HashMap<String, String>();
 	byte[] data = null;
 	byte[] result = null;
@@ -52,6 +66,7 @@
 
 	if (data == null || data.length == 0)
 	{
+	    log.severe("No file uploaded");
 		throw new Exception("No file uploaded");
 	}
 

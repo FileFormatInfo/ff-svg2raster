@@ -10,7 +10,7 @@
 	</tr>
 	<tr>
 		<td valign="top">Source file</td>
-		<td><input name="stdin" type="file" /><br/><img height="20" width="20" style="vertical-align:middle;" border="0" src="/images/20x20/caution.png" alt="Warning" title="Warning" /> Maximum upload size is 5 MB</td>
+		<td><input name="stdin" type="file" /></td>
 	</tr>
 	<tr>
 		<td valign="top">Convert to</td>

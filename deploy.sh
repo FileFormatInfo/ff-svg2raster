@@ -3,4 +3,4 @@
 #
 #
 
-gcloud beta app deploy --verbosity=info www
+gcloud beta app deploy --project=ff-svg2raster --verbosity=info www

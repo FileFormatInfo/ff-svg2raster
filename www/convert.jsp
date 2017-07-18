@@ -3,20 +3,35 @@
 		 import="java.io.*,
 		 		 java.text.*,
 		 		 java.util.*,
+		 		 java.util.logging.Logger,
+		 		 java.util.regex.*,
 		 		 org.apache.batik.transcoder.*,
 		 		 org.apache.batik.transcoder.image.*,
 		 		 org.apache.commons.fileupload.*,
 		 		 org.apache.commons.fileupload.servlet.*,
 		 		 org.apache.commons.fileupload.util.*,
 		 		 org.apache.commons.lang3.*"
+%><%!
+    private static final Logger log = Logger.getLogger("convert.jsp");
+    private static final Pattern refpat = Pattern.compile("^https?://www\\.fileformat\\.info/.*");
 %><%
 
 	if (request.getMethod().equalsIgnoreCase("post") == false)
 	{
-		response.sendRedirect("http://www.fileformat.info/convert/image/svg2raster.htm");
+		response.sendRedirect("https://www.fileformat.info/convert/image/svg2raster.htm");
 		return;
 	}
 
+	String referrer = request.getHeader("Referer");
+	if (referrer == null)
+	{
+	    log.info("No referrer");
+	}
+	else if (refpat.matcher(referrer).matches() == false)
+	{
+	    log.warning("Foreign referrer: '" + referrer + "'");
+    }
+    
 %><!DOCTYPE html>
 <html>
 <head>
@@ -61,6 +76,7 @@
 					baos.write(buffer, 0, len);
 				}
 				out.println("INFO: file size=" + total);
+				log.info("Uploaded file is " + total + " bytes");
 				data = baos.toByteArray();
 			}
 		}
@@ -68,6 +84,7 @@
 	catch (Exception e)
 	{
 		out.print("UPLOAD ERROR: " + escape(e.getMessage()));
+		log.severe("Exception during upload: " + e.getMessage());
 		return;
 	}
 	out.println("INFO: upload complete");
@@ -75,6 +92,7 @@
 	if (data == null || data.length == 0)
 	{
 		out.println("ERROR: no file!  Pick the .svg file you want to convert!");
+		log.severe("No file uploaded");
 		return;
 	}
 
@@ -139,11 +157,13 @@
         result = outStream.toByteArray();
 
         out.println("INFO: complete.  file size=" + (result == null ? -1 : result.length));
+        log.info("Complete!  svg size is " + (result == null ? -1 : result.length));
     }
     catch (Exception e)
     {
     	out.println("ERROR: " + e.getMessage());
     	e.printStackTrace(new PrintWriter(out, true));
+    	log.severe("Exception during processing: " + e.getMessage());
     }
     out.println("INFO: done");
     out.println("</pre>");
