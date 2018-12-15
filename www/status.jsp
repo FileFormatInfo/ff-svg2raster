@@ -1,7 +1,7 @@
 <%@ page contentType="text/plain;charset=utf-8"
-		 import="		 		 java.time.*,
+		 import="java.time.*,
 		 		 java.time.format.*,
-org.json.simple.*"
+				 org.json.simple.*"
 %><%
 	JSONObject retVal = new JSONObject();
 	retVal.put("success", Boolean.TRUE);
@@ -35,6 +35,9 @@ org.json.simple.*"
 	}
 	else
 	{
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET, POST");
+		response.setHeader("Access-Control-Max-Age", "604800");
 		out.print(json);
 	}
 %>
