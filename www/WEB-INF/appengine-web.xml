@@ -3,6 +3,8 @@
     <runtime>java8</runtime>
     <system-properties>
         <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+        <property name="COMMIT" value="dev"/>
+        <property name="LASTMOD" value="dev"/>
     </system-properties>
     <threadsafe>true</threadsafe>
 </appengine-web-app>
