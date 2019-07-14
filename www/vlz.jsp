@@ -47,8 +47,8 @@
         in.close();
 	}
 	catch (Exception e) {
-		log.severe("Unable to load SVG from " + svgURL.toString());
-		throw new Exception("Error reading SVG");
+		log.severe("Unable to load SVG from " + svgURL.toString() + ": " + e.getMessage());
+		throw new Exception("Error reading SVG", e);
 	}
 
 	if (data.length() == 0)
@@ -69,6 +69,8 @@
 	{
 		t.addTranscodingHint(PNGTranscoder.KEY_WIDTH, new Float(width));
 	}
+	t.addTranscodingHint(PNGTranscoder.KEY_FORCE_TRANSPARENT_WHITE, true);
+	
 
 	Reader reader = new StringReader(data.toString());
 	TranscoderInput input = new TranscoderInput(reader);
