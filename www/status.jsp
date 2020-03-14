@@ -6,9 +6,9 @@
 	JSONObject retVal = new JSONObject();
 	retVal.put("success", Boolean.TRUE);
 	retVal.put("message", "OK");
-    retVal.put("commit", System.getProperty("COMMIT", "(unknown)"));
+    retVal.put("commit", System.getenv("COMMIT"));
 	retVal.put("timestamp", ZonedDateTime.now( ZoneOffset.UTC ).format( DateTimeFormatter.ISO_INSTANT ));
-    retVal.put("lastmod", System.getProperty("LASTMOD", "(unknown)"));
+    retVal.put("lastmod", System.getenv("LASTMOD"));
 	retVal.put("tech", "Java " + System.getProperty("java.specification.version", "(unknown)"));
 	retVal.put("version", System.getProperty("java.version", "Unknown") + " (" + System.getProperty("java.vm.name", "Unknown VM") + ")");
 	retVal.put("java.vendor", System.getProperty("java.vendor"));
