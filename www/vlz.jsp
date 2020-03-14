@@ -1,6 +1,7 @@
 <%@ page contentType="image/png"
 		 errorPage="/500.jsp"
-		 import="java.io.*,
+		 import="java.awt.Color,
+		 		 java.io.*,
 		 		 java.net.*,
 		 		 java.text.*,
 		 		 java.util.*,
@@ -58,6 +59,8 @@
 	}
 
 	Transcoder t = new PNGTranscoder();
+
+	t.addTranscodingHint(PNGTranscoder.KEY_BACKGROUND_COLOR, Color.WHITE);
 
 	int height = parseInt(request.getParameter("height"), -1);
 	if (height > 0 && height < 10000)
