@@ -5,7 +5,7 @@
 		 		 java.util.*"
 %><%
 
-	response.sendRedirect("http://www.fileformat.info/convert/image/svg2raster.htm");
+	response.sendRedirect("https://www.fileformat.info/convert/image/svg2raster.htm");
 	if (1 == 1)
 	{
 		return;
