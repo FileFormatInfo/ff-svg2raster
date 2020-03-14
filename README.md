@@ -9,7 +9,7 @@ but the code should work on any recent Java web server.
 
 ## License
 
-Copyright © 2005-2017 Andrew Marcuse
+Copyright © 2005-2020 Andrew Marcuse <!-- COPYRIGHTYEAR -->
 
 ff-svg2raster is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero Public License as published by
