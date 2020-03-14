@@ -1,0 +1,13 @@
+chart/*
+dist/*
+.editorconfig
+.env
+*.env
+.git/*
+.gitignore
+*.md
+node_modules/*
+nodemon.json
+now.json
+*.sh
+tmp/*
